@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Go-cheat-sheet by arelangi</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Go-cheat-sheet</h1>
+        <p>Golang cheat sheet</p>
+
+        <p class="view"><a href="https://github.com/arelangi/go-cheat-sheet">View the Project on GitHub <small>arelangi/go-cheat-sheet</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/arelangi/go-cheat-sheet/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/arelangi/go-cheat-sheet/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/arelangi/go-cheat-sheet">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h1>
+
+<ul>
+<li><a href="#Variables">Variables</a></li>
+<li><a href="#Arrays">Arrays</a></li>
+<li><a href="#Slices">Slices</a></li>
+<li><a href="#Maps">Maps</a></li>
+<li><a href="#Control-Structures">Control Structures</a></li>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Closures">Closures</a></li>
+</ul><h2>
+<a name="variables" class="anchor" href="#variables"><span class="octicon octicon-link"></span></a>
+<a name="Variables"></a>Variables</h2>
+
+<div class="highlight highlight-go"><pre><span class="kd">const</span> <span class="nx">title</span> <span class="p">=</span><span class="s">"Best Series Ever"</span>
+<span class="kd">var</span> <span class="nx">season</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">6</span>
+<span class="nx">episodes</span> <span class="o">:=</span> <span class="mi">22</span>
+
+<span class="kd">var</span><span class="p">(</span>
+  <span class="nx">a</span> <span class="p">=</span> <span class="mi">5</span>
+  <span class="nx">b</span> <span class="p">=</span> <span class="mf">6.54</span>
+  <span class="nx">c</span> <span class="p">=</span> <span class="s">"hello!"</span>
+  <span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="arrays" class="anchor" href="#arrays"><span class="octicon octicon-link"></span></a>
+<a name="Arrays"></a>Arrays</h2>
+
+<div class="highlight highlight-go"><pre><span class="kd">var</span> <span class="nx">primes</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
+<span class="nx">primes</span><span class="p">[</span><span class="mi">0</span><span class="p">]=</span><span class="mi">2</span>
+
+<span class="nx">letters</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">"a"</span><span class="p">,</span><span class="s">"b"</span><span class="p">,</span><span class="s">"c"</span><span class="p">}</span>
+
+<span class="nx">temps</span> <span class="o">:=</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">float64</span><span class="p">{</span>
+  <span class="mf">1.2</span><span class="p">,</span>
+  <span class="mf">2.3</span><span class="p">,</span>
+  <span class="mf">3.4</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="slices" class="anchor" href="#slices"><span class="octicon octicon-link"></span></a>
+<a name="Slices"></a>Slices</h2>
+
+<div class="highlight highlight-go"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="p">[]</span><span class="kt">float64</span>
+<span class="nx">b</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">)</span>
+<span class="nx">arr</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>
+<span class="nx">x</span> <span class="o">:=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+<h2>
+<a name="maps" class="anchor" href="#maps"><span class="octicon octicon-link"></span></a>
+<a name="Maps"></a>Maps</h2>
+
+<div class="highlight highlight-go"><pre><span class="kd">var</span> <span class="nx">keyValue</span> <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span>
+<span class="nx">keyValue</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="s">"boo!"</span>
+<span class="nb">delete</span><span class="p">(</span><span class="nx">keyvalue</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="nx">y</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="control-structures" class="anchor" href="#control-structures"><span class="octicon octicon-link"></span></a>
+<a name="Control-Structures"></a>Control Structures</h2>
+
+<div class="highlight highlight-go"><pre>
+<span class="k">if</span> <span class="nx">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">{</span>
+  <span class="c1">//Hey it's one</span>
+<span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="nx">i</span><span class="o">==</span><span class="mi">2</span><span class="p">{</span>
+  <span class="c1">//It's two</span>
+<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+  <span class="c1">//Oh, it's neither</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">a</span> <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span>
+<span class="kd">map</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="nx">num</span><span class="p">,</span><span class="nx">status</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="nx">status</span><span class="p">{</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">switch</span> <span class="nx">i</span><span class="p">{</span>
+  <span class="k">case</span> <span class="mi">1</span><span class="p">:</span> <span class="c1">//This one if i is 1. No need of a break</span>
+  <span class="k">case</span> <span class="mi">2</span><span class="p">:</span> <span class="k">fallthrough</span><span class="c1">//This one if i is 2 and then it executes the next case</span>
+  <span class="k">case</span> <span class="mi">3</span><span class="p">:</span> <span class="c1">//This one if i is 3</span>
+  <span class="k">case</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span> <span class="p">:</span> <span class="c1">//Yay! All of these will work</span>
+  <span class="k">default</span><span class="p">:</span> <span class="c1">//This one when nothing matches</span>
+<span class="p">}</span>
+
+<span class="nx">i</span><span class="o">:=</span><span class="mi">1</span>
+<span class="k">for</span> <span class="nx">i</span><span class="o">&lt;=</span> <span class="mi">100</span><span class="p">{</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+  <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="nx">i</span><span class="o">:=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="p">&lt;</span> <span class="mi">1</span><span class="p">=</span><span class="mi">100</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">{</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">arr</span> <span class="o">:=</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>
+<span class="k">for</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">arr</span><span class="p">{</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
+<span class="p">}</span>
+
+</pre></div>
+
+<h2>
+<a name="functions" class="anchor" href="#functions"><span class="octicon octicon-link"></span></a>
+<a name="Functions"></a>Functions</h2>
+
+<div class="highlight highlight-go"><pre><span class="c1">//Function</span>
+<span class="kd">func</span> <span class="nx">sample</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span><span class="o">*</span><span class="nx">b</span>
+<span class="p">}</span>
+
+<span class="c1">//Function returning multiple values</span>
+<span class="kd">func</span> <span class="nx">otherFunc</span><span class="p">(</span><span class="nx">a</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="kt">float64</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">float64</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="o">*</span><span class="nx">c</span>
+<span class="p">}</span>
+
+<span class="c1">//Variadic functions</span>
+<span class="kd">func</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="kt">int</span><span class="p">{</span>
+  <span class="nx">sum</span><span class="o">:=</span><span class="mi">0</span>
+  <span class="k">for</span> <span class="nx">_</span><span class="p">,</span><span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">args</span><span class="p">{</span>
+    <span class="nx">total</span> <span class="o">+=</span><span class="nx">v</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">total</span>
+<span class="p">}</span>
+
+<span class="c1">//Calling the functions</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">(){</span>
+  <span class="nx">a</span> <span class="o">:=</span> <span class="nx">sample</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+  <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span> <span class="o">:=</span> <span class="nx">otherFunc</span><span class="p">(</span><span class="s">"String"</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">)</span>
+  <span class="nx">d</span> <span class="o">:=</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="closures" class="anchor" href="#closures"><span class="octicon octicon-link"></span></a>
+<a name="Closures"></a>Closures</h2>
+
+<div class="highlight highlight-go"><pre><span class="kd">func</span> <span class="nx">makeEvenGenerator</span><span class="p">()</span> <span class="kd">func</span><span class="p">()</span> <span class="kt">uint</span> <span class="p">{</span>
+    <span class="nx">i</span> <span class="o">:=</span> <span class="nb">uint</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kd">func</span><span class="p">()</span> <span class="p">(</span><span class="nx">ret</span> <span class="kt">uint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ret</span> <span class="p">=</span> <span class="nx">i</span>
+        <span class="nx">i</span> <span class="o">+=</span> <span class="mi">2</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">nextEven</span> <span class="o">:=</span> <span class="nx">makeEvenGenerator</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nextEven</span><span class="p">())</span> <span class="c1">// 0</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nextEven</span><span class="p">())</span> <span class="c1">// 2</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nextEven</span><span class="p">())</span> <span class="c1">// 4</span>
+<span class="p">}</span>
+</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/arelangi">arelangi</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

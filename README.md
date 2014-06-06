@@ -7,6 +7,7 @@
 - [Control Structures](#Control-Structures)
 - [Functions](#Functions)
 - [Closures](#Closures)
+- [Structs](#Structs)
 
 ## <a name="Variables"></a>Variables
 
@@ -145,4 +146,18 @@ func main() {
     fmt.Println(nextEven()) // 2
     fmt.Println(nextEven()) // 4
 }
+```
+
+## <a name="Structs"></a>Structs
+
+```go
+type Person struct{
+  name string
+  age int
+  weight float64
+}
+
+a := new(Person)
+b := Person{ name:"John", age:52, weight:160.3}
+c := Person{"James", age:45, weight:174}
 ```

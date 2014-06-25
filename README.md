@@ -8,6 +8,7 @@
 - [Functions](#Functions)
 - [Closures](#Closures)
 - [Structs](#Structs)
+- [Pointers](#Pointers)
 
 ## <a name="Variables"></a>Variables
 
@@ -59,7 +60,7 @@ y := make(map[int]int)
 ## <a name="Control-Structures"></a>Control Structures
 
 ```go
-
+//Basic if
 if i == 1{
   //Hey it's one
 }else if i==2{
@@ -68,6 +69,14 @@ if i == 1{
   //Oh, it's neither
 }
 
+//Using if with a statement
+if x := someFunc(); x != y{
+  fmt.Println("x is not equal to y")
+}else{
+  fmt.Println("x equals y")
+}
+
+//Using if with multiple return value in a statement
 var a map[int]int
 map[1] = 1
 if num,status := map[1]; status{
@@ -88,7 +97,11 @@ for i<= 100{
   i = i+1
 }
 
-for i:=1; i< 1=100;i++{
+for i <100{
+
+}
+
+for i:=1; i < 100;i++{
   fmt.Println(i)
 }
 
@@ -110,6 +123,13 @@ func sample(a,b int) int {
 //Function returning multiple values
 func otherFunc(a string, b, c float64) (string, float64) {
   return a, b*c
+}
+
+//Function returning named variables
+func anotherFunc(int a)(b, c int){
+  b = a+1
+  c = a+2
+  return
 }
 
 //Variadic functions
@@ -151,13 +171,52 @@ func main() {
 ## <a name="Structs"></a>Structs
 
 ```go
+//Defining a struct
 type Person struct{
-  name string
-  age int
-  weight float64
+  Name string
+  Age int
+  Weight float64
 }
 
+//Declaring and initializing a struct
 a := new(Person)
-b := Person{ name:"John", age:52, weight:160.3}
-c := Person{"James", age:45, weight:174}
+b := Person{ Name:"John", Age:52, Weight:160.3}
+c := Person{ "James", 45, 174}
+d := Person{ Name:"Jim"}
+e := Person{}
+
+//Accessing the fields in a struct
+a.Name = "Cormoran"
+a.Weight = 200
+
+fmt.Println("c's name is ", c.Name)
+
+```
+
+## <a name="Pointers"></a>Pointers
+
+```go
+
+//Simple pointer
+func main(){
+  x:= 200
+  fmt.Println(x) //prints 200
+  xPtr := &x
+  *xPtr = 0
+  fmt.Println(x) // prints 0
+}
+
+//Struct pointer
+type Person struct{
+  Name string
+  Age int
+  Weight float64
+}
+
+func main(){
+  p := Person{"Jack",10,50}
+  pPtr := &p
+  fmt.Println(pPtr.Name) //prints Jack
+}
+
 ```

@@ -7,8 +7,10 @@
 - [Control Structures](#Control-Structures)
 - [Functions](#Functions)
 - [Closures](#Closures)
-- [Structs](#Structs)
 - [Pointers](#Pointers)
+- [Structs](#Structs)
+- [Methods](#Methods)
+
 
 ## <a name="Variables"></a>Variables
 
@@ -52,9 +54,10 @@ x := arr[0:3]
 
 ```go
 var keyValue map[int]string
+keyValue = make(map[int]string)
 keyValue[1] = "boo!"
 delete(keyvalue,1)
-y := make(map[int]int)
+value,ok := keyValue[1] // Check if a value exists for a key
 ```
 
 ## <a name="Control-Structures"></a>Control Structures
@@ -126,7 +129,7 @@ func otherFunc(a string, b, c float64) (string, float64) {
 }
 
 //Function returning named variables
-func anotherFunc(int a)(b, c int){
+func anotherFunc(a int)(b, c int){
   b = a+1
   c = a+2
   return
@@ -146,8 +149,15 @@ func main(){
   a := sample(1,2)
   b, c := otherFunc("String", 1.2, 2.3)
   d := sum(1,2,3,4,5,6)
+
+  //A function can be a value
+  yetAnotherFunc := func(a, b float64 ) float64{
+    return a*a*b
+  }
+
+  fmt.Println(yetAnotherFunc(1.3,4.2))
 }
-```
+
 
 ## <a name="Closures"></a>Closures
 
@@ -168,30 +178,6 @@ func main() {
 }
 ```
 
-## <a name="Structs"></a>Structs
-
-```go
-//Defining a struct
-type Person struct{
-  Name string
-  Age int
-  Weight float64
-}
-
-//Declaring and initializing a struct
-a := new(Person)
-b := Person{ Name:"John", Age:52, Weight:160.3}
-c := Person{ "James", 45, 174}
-d := Person{ Name:"Jim"}
-e := Person{}
-
-//Accessing the fields in a struct
-a.Name = "Cormoran"
-a.Weight = 200
-
-fmt.Println("c's name is ", c.Name)
-
-```
 
 ## <a name="Pointers"></a>Pointers
 
@@ -219,4 +205,45 @@ func main(){
   fmt.Println(pPtr.Name) //prints Jack
 }
 
+```
+
+
+## <a name="Structs"></a>Structs
+
+```go
+//Defining a struct
+type Person struct{
+  Name string
+  Age int
+  Weight float64
+  Height float64
+}
+
+//Declaring and initializing a struct
+a := new(Person)
+b := Person{ Name:"John", Age:52, Weight:160.3, Height: 72.0}
+c := Person{ "James", 45, 174, 65.5}
+d := Person{ Name:"Jim"}
+e := Person{}
+
+//Accessing the fields in a struct
+a.Name = "Cormoran"
+a.Weight = 200
+
+fmt.Println("c's name is ", c.Name)
+
+```
+
+## <a name="Methods"></a>Methods
+
+```go
+//Method for the struct Person defined earlier
+func (p *Person) BMI() float64{
+  return 703.06957964*(p.Weight/(p.Height*p.Height))
+}
+
+func main(){
+  c := Person{ "James", 45, 174, 65.5}
+  fmt.Println(c.BMI())
+}
 ```

@@ -63,23 +63,23 @@ value,ok := keyValue[1] // Check if a value exists for a key
 ## <a name="Control-Structures"></a>Control Structures
 
 ```go
-//Basic if
+// Basic if
 if i == 1{
-  //Hey it's one
+  // Hey it's one
 }else if i==2{
-  //It's two
+  // It's two
 }else{
-  //Oh, it's neither
+  // Oh, it's neither
 }
 
-//Using if with a statement
+// Using if with a statement
 if x := someFunc(); x != y{
   fmt.Println("x is not equal to y")
 }else{
   fmt.Println("x equals y")
 }
 
-//Using if with multiple return value in a statement
+// Using if with multiple return value in a statement
 var a map[int]int
 map[1] = 1
 if num,status := map[1]; status{
@@ -87,11 +87,11 @@ if num,status := map[1]; status{
 }
 
 switch i{
-  case 1: //This one if i is 1. No need of a break
-  case 2: fallthrough//This one if i is 2 and then it executes the next case
-  case 3: //This one if i is 3
-  case 4,5,6,7 : //Yay! All of these will work
-  default: //This one when nothing matches
+  case 1: // This one if i is 1. No need of a break
+  case 2: fallthrough // This one if i is 2 and then it executes the next case
+  case 3: // This one if i is 3
+  case 4,5,6,7 : // Yay! All of these will work
+  default: // This one when nothing matches
 }
 
 i:=1
@@ -118,24 +118,24 @@ for n := range arr{
 ## <a name="Functions"></a>Functions
 
 ```go
-//Function
+// Function
 func sample(a,b int) int {
   return a*b
 }
 
-//Function returning multiple values
+// Function returning multiple values
 func otherFunc(a string, b, c float64) (string, float64) {
   return a, b*c
 }
 
-//Function returning named variables
+// Function returning named variables
 func anotherFunc(a int)(b, c int){
   b = a+1
   c = a+2
   return
 }
 
-//Variadic functions
+// Variadic functions
 func sum(args ...int) int{
   sum:=0
   for _,v := range args{
@@ -144,13 +144,13 @@ func sum(args ...int) int{
   return total
 }
 
-//Calling the functions
+// Calling the functions
 func main(){
   a := sample(1,2)
   b, c := otherFunc("String", 1.2, 2.3)
   d := sum(1,2,3,4,5,6)
 
-  //A function can be a value
+  // A function can be a value
   yetAnotherFunc := func(a, b float64 ) float64{
     return a*a*b
   }
@@ -202,7 +202,7 @@ type Person struct{
 func main(){
   p := Person{"Jack",10,50}
   pPtr := &p
-  fmt.Println(pPtr.Name) //prints Jack
+  fmt.Println(pPtr.Name) // prints Jack
 }
 
 ```
@@ -211,7 +211,7 @@ func main(){
 ## <a name="Structs"></a>Structs
 
 ```go
-//Defining a struct
+// Defining a struct
 type Person struct{
   Name string
   Age int
@@ -219,14 +219,14 @@ type Person struct{
   Height float64
 }
 
-//Declaring and initializing a struct
+// Declaring and initializing a struct
 a := new(Person)
 b := Person{ Name:"John", Age:52, Weight:160.3, Height: 72.0}
 c := Person{ "James", 45, 174, 65.5}
 d := Person{ Name:"Jim"}
 e := Person{}
 
-//Accessing the fields in a struct
+// Accessing the fields in a struct
 a.Name = "Cormoran"
 a.Weight = 200
 
@@ -237,7 +237,7 @@ fmt.Println("c's name is ", c.Name)
 ## <a name="Methods"></a>Methods
 
 ```go
-//Method for the struct Person defined earlier
+// Method for the struct Person defined earlier
 func (p *Person) BMI() float64{
   return 703.06957964*(p.Weight/(p.Height*p.Height))
 }
